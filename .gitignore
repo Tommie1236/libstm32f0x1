@@ -1,0 +1,4 @@
+**.cache/**
+build/
+compile_commands.json
+libstm32f0x1.a
