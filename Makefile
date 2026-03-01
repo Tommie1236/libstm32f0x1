@@ -7,6 +7,7 @@
 # * ⚠️ ACADEMIC NOTICE: For portfolio use only. Students at Avans UAS 
 # are prohibited from using this code in graded assignments.
 
+.SILENT:
 
 CC = arm-none-eabi-gcc
 AR = arm-none-eabi-ar
@@ -29,13 +30,16 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 all: $(LIB)
 
 $(LIB): $(OBJS)
+	echo "  [AR]  $(LIB): [$(OBJS) ]"
 	$(AR) rcs $@ $(OBJS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
+	echo "  [CC]  $(notdir $<)"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 clean:
+	echo "  [RM]  $(BUILD_DIR) $(LIB) compile_commands.json"
 	rm -rf $(BUILD_DIR) $(LIB) compile_commands.json
