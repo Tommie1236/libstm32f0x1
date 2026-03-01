@@ -1,3 +1,14 @@
+/**
+ * @file    flash.h
+ * @author  Timo Oosterom
+ * @brief   STM32F0x1 HAL: FLASH Driver
+ * @date    feb 28 2026
+ * * @copyright Copyright (c) 2026 Timo Oosterom
+ * Licensed under the MIT License. See LICENSE file in the project root.
+ * * ⚠️ ACADEMIC NOTICE: For portfolio use only. Students at Avans UAS 
+ * are prohibited from using this code in graded assignments.
+ */
+
 
 #ifndef FLASH_H
 #define FLASH_H
@@ -5,7 +16,7 @@
 #include "stm32f0_common.h"
 
 typedef struct {
-    __IO uint32_t ACR;
+    __IO uint32_t ACR;      // done
     __O  uint32_t KEYR;
     __O  uint32_t OPTKEYR;
     __IO uint32_t SR;

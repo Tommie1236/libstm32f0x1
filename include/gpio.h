@@ -1,3 +1,14 @@
+/**
+ * @file    gpio.h
+ * @author  Timo Oosterom
+ * @brief   STM32F0x1 HAL: GPIO Driver
+ * @date    feb 28 2026
+ * * @copyright Copyright (c) 2026 Timo Oosterom
+ * Licensed under the MIT License. See LICENSE file in the project root.
+ * * ⚠️ ACADEMIC NOTICE: For portfolio use only. Students at Avans UAS 
+ * are prohibited from using this code in graded assignments.
+ */
+
 
 #ifndef GPIO_H
 #define GPIO_H
