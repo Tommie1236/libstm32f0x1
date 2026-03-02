@@ -17,6 +17,7 @@
 static bool adc_not_calibrated = 1;
 
 void adc_init(void){
+    RCC->APB2ENR |= RCC_APB2ENR_ADCEN_Msk;
     adc_set_clock(ADC_ADCCLK);
     adc_auto_calibrate();
     adc_enable();

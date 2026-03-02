@@ -19,10 +19,10 @@ typedef struct {
     __IO uint32_t CR;       // done
     __IO uint32_t CFGR;     // done
     __IO uint32_t CIR;
-    __IO uint32_t APB2RSTR;
+    __IO uint32_t APB2RSTR; // done
     __IO uint32_t APB1RSTR;
-    __IO uint32_t AHBENR;   // needs work
-    __IO uint32_t APB2ENR;
+    __IO uint32_t AHBENR;   // done
+    __IO uint32_t APB2ENR;  // done
     __IO uint32_t APB1ENR;
     __IO uint32_t BDCR;
     __IO uint32_t CSR;
@@ -146,6 +146,35 @@ typedef struct {
 #define RCC_CRGR_PLLNODIV_Pos       31
 #define RCC_CRGR_PLLNODIV_Msk       (1U << RCC_CRGR_PLLNODIV_Pos)
 
+// TODO: CIR
+
+#define RCC_APB2RSTR_SYSCFGRST_Pos  0
+#define RCC_APB2RSTR_SYSCFGRST_Msk  (1U << RCC_APB2RSTR_SYSCFGRST_Pos)
+#define RCC_APB2RSTR_USART6RST_Pos  5
+#define RCC_APB2RSTR_USART6RST_Msk  (1U << RCC_APB2RSTR_USART6RST_Pos)
+#define RCC_APB2RSTR_USART7RST_Pos  6
+#define RCC_APB2RSTR_USART7RST_Msk  (1U << RCC_APB2RSTR_USART7RST_Pos)
+#define RCC_APB2RSTR_USART8RST_Pos  7
+#define RCC_APB2RSTR_USART8RST_Msk  (1U << RCC_APB2RSTR_USART8RST_Pos)
+#define RCC_APB2RSTR_ADCRST_Pos     9
+#define RCC_APB2RSTR_ADCRST_Msk     (1U << RCC_APB2RSTR_ADCRST_Pos)
+#define RCC_APB2RSTR_TIM1RST_Pos    11
+#define RCC_APB2RSTR_TIM1RST_Msk    (1U << RCC_APB2RSTR_TIM1RST_Pos)
+#define RCC_APB2RSTR_SPI1RST_Pos    12
+#define RCC_APB2RSTR_SPI1RST_Msk    (1U << RCC_APB2RSTR_SPI1RST_Pos)
+#define RCC_APB2RSTR_USART1RST_Pos  14
+#define RCC_APB2RSTR_USART1RST_Msk  (1U << RCC_APB2RSTR_USART1RST_Pos)
+#define RCC_APB2RSTR_TIM15RST_Pos   16
+#define RCC_APB2RSTR_TIM15RST_Msk   (1U << RCC_APB2RSTR_TIM15RST_Pos)
+#define RCC_APB2RSTR_TIM16RST_Pos   17
+#define RCC_APB2RSTR_TIM16RST_Msk   (1U << RCC_APB2RSTR_TIM16RST_Pos)
+#define RCC_APB2RSTR_TIM17RST_Pos   18
+#define RCC_APB2RSTR_TIM17RST_Msk   (1U << RCC_APB2RSTR_TIM17RST_Pos)
+#define RCC_APB2RSTR_DBGMCURST_Pos  22 
+#define RCC_APB2RSTR_DBGMCURST_Msk  (1U << RCC_APB2RSTR_DBGMCURST_Pos)
+
+// TODO: APB1RSTR
+
 #define RCC_AHBENR_DMAEN_Pos        0
 #define RCC_AHBENR_DMAEN_Msk        (1U << RCC_AHBENR_DMAEN_Pos)        
 #define RCC_AHBENR_DMA2EN_Pos       1
@@ -171,7 +200,32 @@ typedef struct {
 #define RCC_AHBENR_TSCEN_Pos        24
 #define RCC_AHBENR_TSCEN_Msk        (1U << RCC_AHBENR_TSCEN_Pos)
 
-// The one flash register config needed for clock.
+#define RCC_APB2ENR_SYSCFGCOMPEN_Pos    0
+#define RCC_APB2ENR_SYSCFGCOMPEN_Msk    (1U << RCC_APB2ENR_SYSCFGCOMPEN_Pos)
+#define RCC_APB2ENR_USART6EN_Pos    5
+#define RCC_APB2ENR_USART6EN_Msk    (1U << RCC_APB2ENR_USART6EN_Pos)
+#define RCC_APB2ENR_USART7EN_Pos    6
+#define RCC_APB2ENR_USART7EN_Msk    (1U << RCC_APB2ENR_USART7EN_Pos)
+#define RCC_APB2ENR_USART8EN_Pos    7
+#define RCC_APB2ENR_USART8EN_Msk    (1U << RCC_APB2ENR_USART8EN_Pos)
+#define RCC_APB2ENR_ADCEN_Pos       9
+#define RCC_APB2ENR_ADCEN_Msk       (1U << RCC_APB2ENR_ADCEN_Pos)
+#define RCC_APB2ENR_TIM1EN_Pos      11
+#define RCC_APB2ENR_TIM1EN_Msk      (1U << RCC_APB2ENR_TIM1EN_Pos)
+#define RCC_APB2ENR_SPI1EN_Pos      12
+#define RCC_APB2ENR_SPI1EN_Msk      (1U << RCC_APB2ENR_SPI1EN_Pos)
+#define RCC_APB2ENR_USART1EN_Pos    14
+#define RCC_APB2ENR_USART1EN_Msk    (1U << RCC_APB2ENR_USART1EN_Pos)
+#define RCC_APB2ENR_TIM15_Pos       16
+#define RCC_APB2ENR_TIM15_Msk       (1U << RCC_APB2ENR_TIM15_Pos)
+#define RCC_APB2ENR_TIM16_Pos       17
+#define RCC_APB2ENR_TIM16_Msk       (1U << RCC_APB2ENR_TIM16_Pos)
+#define RCC_APB2ENR_TIM17_Pos       18
+#define RCC_APB2ENR_TIM17_Msk       (1U << RCC_APB2ENR_TIM17_Pos)
+#define RCC_APB2ENR_DBGMCUEN_Pos    22
+#define RCC_APB2ENR_DBGMCUEN_Msk    (1U << RCC_APB2ENR_DBGMCUEN_Pos)
+
+
 
 
 
