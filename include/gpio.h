@@ -29,7 +29,7 @@ typedef struct {
     __O  uint32_t BRR;      // done
 } GPIOx;
 
-typedef enum{
+typedef enum {
     GPIO_INPUT      = 0x00,
     GPIO_OUTPUT     = 0x01,
     GPIO_ALTERNATE  = 0x02,
@@ -59,30 +59,21 @@ typedef enum {
 } GPIO_ALTERNATE_FUNCTION;
 
 #define GPIOA ((GPIOx *)0x48000000)
+#define PORTA GPIOA
 #define GPIOB ((GPIOx *)0x48000400)
+#define PORTB GPIOB
 #define GPIOC ((GPIOx *)0x48000800)
+#define PORTC GPIOC
 #define GPIOD ((GPIOx *)0x48000c00)
+#define PORTD GPIOD
 #define GPIOE ((GPIOx *)0x48001000)
+#define PORTE GPIOE
 #define GPIOF ((GPIOx *)0x48001400)
+#define PORTF GPIOF
 
-/*
-#define GPIO_0  (1U << 0x0)
-#define GPIO_1  (1U << 0x02)
-#define GPIO_2  (1U << 0x04)
-#define GPIO_3  (1U << 0x06)
-#define GPIO_4  (1U << 0x08)
-#define GPIO_5  (1U << 0x0A)
-#define GPIO_6  (1U << 0x0C)
-#define GPIO_7  (1U << 0x0E)
-#define GPIO_8  (1U << 0x10)
-#define GPIO_9  (1U << 0x12)
-#define GPIO_10 (1U << 0x14)
-#define GPIO_11 (1U << 0x16)
-#define GPIO_12 (1U << 0x18)
-#define GPIO_13 (1U << 0x1A)
-#define GPIO_14 (1U << 0x1C)
-#define GPIO_15 (1U << 0x1E)
-*/
+
+// TODO: Bit definitions/masks
+
 
 void gpio_set_mode(GPIOx *port,
                    uint8_t gpio,
