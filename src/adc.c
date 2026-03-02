@@ -40,13 +40,15 @@ void adc_enable(void) {
 void adc_disable(void) {
     // Disable sequence from ST RM0091 A.7.3
 
-    // Stop and wait for any ongoing conversion (ADSTP = 0).
-    ADC->CR |= ADC_CR_ADSTP_Msk;
-    while ((ADC->CR & ADC_CR_ADSTP_Msk) != 0);      // TODO: Add timeout?
+    // Stop conversion if active and wait until stop (ADSTP = 0).
+     if (ADC->CR & ADC_CR_ADSTART_Msk) {
+        ADC->CR |= ADC_CR_ADSTP_Msk;
+        while (ADC->CR & ADC_CR_ADSTP_Msk);         // TODO: Add timeout?
+    }  
 
     // Disable and wait until disabled (ADEN = 0).
     ADC->CR |= ADC_CR_ADDIS_Msk;
-    while ((ADC->CR & ADC_CR_ADEN_Msk) != 0);       // TODO: Add timeout?
+    while ((ADC->CR & ADC_CR_ADEN_Msk));            // TODO: Add timeout?
 
 }
 

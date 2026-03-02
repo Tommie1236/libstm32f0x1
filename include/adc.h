@@ -23,12 +23,12 @@ typedef struct {
     __IO uint32_t CFGR1;        // done
     __IO uint32_t CFGR2;        // done
     __IO uint32_t SMPR;         // done
+         uint32_t RESERVED[2];
     __IO uint32_t TR;           // done
+         uint32_t RESERVED2;
     __IO uint32_t CHSELR;       // done
-         uint16_t RESERVED[5];
+         uint32_t RESERVED3[5];
     __IO uint32_t DR;           // done
-    __IO uint32_t CCR;          // done
-
 } ADC_T;
 
 typedef struct {
