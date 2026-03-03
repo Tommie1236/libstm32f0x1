@@ -17,6 +17,7 @@
 #include <stdbool.h>
 
 typedef struct {
+    // TODO: all still need bit definitionsi
     __IO uint32_t MODER;    // done
     __IO uint32_t OTYPER;   // done
     __IO uint32_t OSPEEDR;

@@ -41,7 +41,7 @@ void gpio_set_pulls(GPIOx *port,
 
 bool gpio_get(GPIOx *port, uint8_t gpio) {
 
-    return (bool)(port->IDR >> gpio) & 1U;
+    return (bool)((port->IDR >> gpio) & 1U);
 }
 
 
