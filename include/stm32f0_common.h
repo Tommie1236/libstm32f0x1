@@ -14,6 +14,7 @@
 #define STM32F0_COMMON_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define __I     volatile const    // Read-only
 #define __O     volatile          // Write-only
