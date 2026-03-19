@@ -7,6 +7,8 @@ A custom-built Hardware Abstraction Layer (HAL) designed to simplify development
 * **SYSTICK:** Millisecond-accurate hardware counter for timing operations.
 * **TIME:** High-level timing functions (e.g., `delay_ms`).
 * **GPIO:** Port configuration, pin manipulation, and toggling logic.
+* **ADC:** Basic single ended conversions.
+* **TIMERS:** Basic operations Timers 2/3 to use it as delay etc. 
 
 ---
 
