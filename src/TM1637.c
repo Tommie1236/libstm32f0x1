@@ -20,6 +20,7 @@ static GPIOx* DIO_PORT;
 static uint8_t SCK_PIN;
 static uint8_t DIO_PIN;
 static uint8_t segment_values[4] = {0x00};
+static bool colon = 0;
 
 const uint8_t SEGMENTS[] = {
     0x3F, // 0
@@ -109,6 +110,7 @@ void tm1637_set_brightness(uint8_t brightness) {
 
 void tm1637_write_segment(uint8_t segment, uint8_t data) {
     segment_values[segment] = data;
+    if (segment == 1 ) data |= colon << 7;
     tm1637_start_bit();
     tm1637_write_byte(TM1637_COMMAND_ADDR | (segment % 4));
     tm1637_write_byte(data);
@@ -127,7 +129,7 @@ void tm1637_write_display(uint8_t segment0, uint8_t segment1, uint8_t segment2, 
     tm1637_start_bit();
     tm1637_write_byte(TM1637_COMMAND_ADDR);
     tm1637_write_byte(segment0);
-    tm1637_write_byte(segment1);
+    tm1637_write_byte(segment1 | colon << 7);
     tm1637_write_byte(segment2);
     tm1637_write_byte(segment3);
     tm1637_stop_bit();
@@ -135,6 +137,7 @@ void tm1637_write_display(uint8_t segment0, uint8_t segment1, uint8_t segment2, 
 
 
 void tm1637_set_colon(bool enabled) {
+    colon = enabled;
     tm1637_start_bit();
     tm1637_write_byte(TM1637_COMMAND_ADDR | 0x01);
     tm1637_write_byte(segment_values[1] | (enabled << 7));
