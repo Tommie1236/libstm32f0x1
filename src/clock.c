@@ -40,6 +40,8 @@ void clock_init(void) {
                    RCC_AHBENR_IOPDEN_Msk |
                    RCC_AHBENR_IOPEEN_Msk |
                    RCC_AHBENR_IOPFEN_Msk;
+
+    RCC->APB2ENR |= RCC_APB2ENR_SYSCFGCOMPEN_Msk;
 }
 
 

@@ -13,10 +13,6 @@
 
 static exti_callback_t exti_callbacks[16] = {0};
 
-void exti_init(void) {
-    RCC->APB2ENR |= RCC_APB2ENR_SYSCFGCOMPEN_Msk;
-}
-
 void exti_configure(uint8_t line, bool rising, bool falling) {
     EXTI->RTSR |= rising  << line;
     EXTI->FTSR |= falling << line;

@@ -166,7 +166,6 @@ typedef void (*exti_callback_t)(void);
 
 // Methods
 
-void exti_init(void);
 void exti_configure(uint8_t line, bool rising, bool falling);
 void exti_map(SYSCFG_EXTI_PORT port, uint8_t pin);
 void exti_enable(uint8_t line);
