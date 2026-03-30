@@ -14,8 +14,17 @@
 
 volatile uint32_t ms_ticks = 0;
 
+static systick_callback_t callback = 0;
+static uint32_t callback_interval = 0;
+static uint32_t callback_counter = 0;
+
 void SysTick_Handler(void) {
     ms_ticks++;
+
+    if (callback && ++callback_counter >= callback_interval) {
+        callback_counter = 0;
+        callback();
+    }
 }
 
 void systick_init(uint32_t reload_value) {
@@ -58,4 +67,10 @@ void systick_set_reload_value(uint32_t reload_value) {
 
 uint32_t systick_get_current_value(void) {
     return (SYSTICK->CVR & SYSTICK_CVR_CURRENT_Msk);
+}
+
+void systick_set_callback_interval(systick_callback_t cb, uint32_t interval_ms) {
+    callback = cb;
+    callback_interval = interval_ms;
+    callback_counter = 0;
 }
