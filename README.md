@@ -9,6 +9,7 @@ A custom-built Hardware Abstraction Layer (HAL) designed to simplify development
 * **GPIO:** Port configuration, pin manipulation, and toggling logic.
 * **ADC:** Basic single ended conversions.
 * **TIMERS:** Basic operations Timers 2/3 to use it as delay etc. 
+* **SYSCFG/NVIC:** External gpio interrupt features.
 
 ---
 
