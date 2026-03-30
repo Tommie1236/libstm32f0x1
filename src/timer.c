@@ -1,5 +1,5 @@
 /**
- * @file    spi.c
+ * @file    timer.c
  * @author  Timo Oosterom
  * @brief   STM32F0x1 HAL: TIMERS
  * @date    march 20 2026
