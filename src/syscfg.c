@@ -14,8 +14,8 @@
 static exti_callback_t exti_callbacks[16] = {0};
 
 void exti_configure(uint8_t line, bool rising, bool falling) {
-    EXTI->RTSR |= rising  << line;
-    EXTI->FTSR |= falling << line;
+    EXTI->RTSR = (EXTI->RTSR & ~(1U << line)) | (rising  << line);
+    EXTI->FTSR = (EXTI->FTSR & ~(1U << line)) | (falling << line);
 }
 
 void exti_map(SYSCFG_EXTI_PORT port, uint8_t pin) {
