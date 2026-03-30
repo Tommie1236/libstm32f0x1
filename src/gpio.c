@@ -77,4 +77,30 @@ void gpio_set_alternate_mode(GPIOx *port,
     port->AFR[reg_idx] |= af << gpio_offset;
 }
 
+void gpio_attach_interrupt(GPIOx *port,
+                           uint8_t gpio,
+                           exti_callback_t cb) {
 
+    SYSCFG_EXTI_PORT exti_port;
+
+    if      (port == GPIOA) exti_port = SYSCFG_EXTI_PORTA;
+    else if (port == GPIOB) exti_port = SYSCFG_EXTI_PORTB;
+    else if (port == GPIOC) exti_port = SYSCFG_EXTI_PORTC;
+    else if (port == GPIOD) exti_port = SYSCFG_EXTI_PORTD;
+    else if (port == GPIOE) exti_port = SYSCFG_EXTI_PORTE;
+    else if (port == GPIOF) exti_port = SYSCFG_EXTI_PORTF;
+    else return;
+
+    uint8_t irq;
+    if (gpio < 2) irq = 5;
+    else if (gpio < 4) irq = 6;
+    else if (gpio < 16) irq = 7;
+    else return;
+
+    exti_set_callback(gpio, cb);
+    exti_configure(gpio, 1, 1);     // enable both edges by default
+    exti_map(exti_port, gpio);
+    exti_enable(gpio);
+
+    nvic_enable_irq(irq);
+}

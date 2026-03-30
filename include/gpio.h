@@ -16,7 +16,11 @@
 #include "stm32f0_common.h"
 #include <stdbool.h>
 
-typedef struct {
+#include "syscfg.h"
+#include "nvic.h"
+
+
+typedef struct GPIOx_s {
     // TODO: all still need bit definitionsi
     __IO uint32_t MODER;    // done
     __IO uint32_t OTYPER;   // done
@@ -76,6 +80,10 @@ typedef enum {
 // TODO: Bit definitions/masks
 
 
+
+
+// TODO: gpio_init()
+
 void gpio_set_mode(GPIOx *port,
                    uint8_t gpio,
                    GPIO_MODE mode);
@@ -106,5 +114,13 @@ void gpio_reset_atomic(GPIOx *port,
 void gpio_set_alternate_mode(GPIOx *port,
                              uint8_t gpio,
                              GPIO_ALTERNATE_FUNCTION af);
+
+// uint8_t gpio_attach_interrupt(GPIOx *port,
+  //                             uint8_t gpio);
+
+void gpio_attach_interrupt(GPIOx *port,
+                           uint8_t gpio,
+                           exti_callback_t cb);
+
 
 #endif // GPI H
