@@ -77,7 +77,7 @@ Sorted from highest to lowest implementation priority.
 | Peripheral | Status | Notes |
 |---|---|---|
 | **RTC** | ❌ Not started | Real-time clock with calendar, alarm, and wakeup timer. Needs backup domain unlock. |
-| **CRC** | ❌ Not started | Hardware CRC-32 accelerator. Simple DR/CR/IDR interface. |
+| **CRC** | ⚠️ Partial | Clock enable, reset, polynomial config (32/16/8/7-bit), custom polynomial register, REVIN (byte/half-word/word) + REVOUT, DR feed/read. Missing: `crc_disable()`, IDR helper, independent REVOUT control, sub-word (8/16-bit) feed helpers. |
 | **TSC** | ❌ Not started | Touch Sensing Controller. Needed: group/channel config, acquisition, threshold. |
 | **CEC** | ❌ Not started | HDMI-CEC controller. Needed: init, TX/RX, interrupt handling. |
 | **CRS** | ❌ Not started | Clock Recovery System — trims HSI48 using an external reference (SOF or GPIO). |

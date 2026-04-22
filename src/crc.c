@@ -34,7 +34,7 @@ void crc_set_polynomial_size(CRC_POLYSIZE size) {
 void crc_set_reversed_mode(CRC_REVMODE mode) {
     CRC->CR = (CRC->CR & ~CRC_CR_REVIN_Msk) | mode << CRC_CR_REVIN_Pos;
     if (mode) CRC->CR |= CRC_CR_REVOUT_INV;
-    else      CRC->CR &= ~CRC_CR_REVOUT_NONE;
+    else      CRC->CR &= ~CRC_CR_REVOUT_Msk;
 }
 
 void crc_set_polynomial(uint32_t polynomial) {

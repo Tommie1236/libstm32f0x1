@@ -12,6 +12,7 @@ A custom-built Hardware Abstraction Layer (HAL) designed to simplify development
 * **NVIC:** IRQ enable/disable and priority control.
 * **ADC:** Basic single-ended conversions with auto-calibration.
 * **TIMERS:** Basic operations for Timers 2/3.
+* **CRC:** Hardware CRC accelerator with configurable polynomial, size, and bit-reversal (REVIN/REVOUT).
 * **TM1637:** 4-digit 7-segment display driver.
 
 For a full breakdown of what is done, partially done, and still missing, see [TODO.md](TODO.md).
