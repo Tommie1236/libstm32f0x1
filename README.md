@@ -3,13 +3,18 @@
 A custom-built Hardware Abstraction Layer (HAL) designed to simplify development for the STM32F0x1 microcontroller family by abstracting register-level operations into a clean, modular API.
 
 ## Supported Peripherals & Features
-* **RCC:** Basic System Clock configuration and peripheral clock gating.
-* **SYSTICK:** Millisecond-accurate hardware counter for timing operations.
-* **TIME:** High-level timing functions (e.g., `delay_ms`).
-* **GPIO:** Port configuration, pin manipulation, and toggling logic.
-* **ADC:** Basic single ended conversions.
-* **TIMERS:** Basic operations Timers 2/3 to use it as delay etc. 
-* **SYSCFG/NVIC:** External gpio interrupt features.
+* **RCC:** Basic system clock configuration and peripheral clock gating.
+* **FLASH:** Latency and prefetch configuration.
+* **SysTick:** Millisecond-accurate hardware counter for timing operations.
+* **TIME:** High-level timing functions (e.g., `delay_ms`, `delay_us`).
+* **GPIO:** Port configuration, pin manipulation, and alternate function mapping.
+* **EXTI / SYSCFG:** External GPIO interrupt features.
+* **NVIC:** IRQ enable/disable and priority control.
+* **ADC:** Basic single-ended conversions with auto-calibration.
+* **TIMERS:** Basic operations for Timers 2/3.
+* **TM1637:** 4-digit 7-segment display driver.
+
+For a full breakdown of what is done, partially done, and still missing, see [TODO.md](TODO.md).
 
 ---
 
