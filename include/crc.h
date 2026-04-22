@@ -14,6 +14,7 @@
 #define CRC_H
 
 #include "stm32f0_common.h"
+#include "clock.h"
 
 typedef struct {
     __IO uint32_t DR;
@@ -33,18 +34,18 @@ typedef enum {
 typedef enum {
     CRC_REVMODE_NONE,
     CRC_REVMODE_BYTE,
-    CRC_REVMODE_LONG,
+    CRC_REVMODE_HALFWORD,
     CRC_REVMODE_WORD
 } CRC_REVMODE;
 
-#define CRC ((CRC_T *)0x48023000)
+#define CRC ((CRC_T *)0x40023000)
 
 #define CRC_IDR_Pos             0
 #define CRC_IDR_Msk             (0xFF << CRC_IDR_Pos)
 #define CRC_CR_RESET_Pos        0
 #define CRC_CR_RESET_Msk        (1U << CRC_CR_RESET_Pos)
 #define CRC_CR_POLYSIZE_Pos     3
-#define CRC_CR_POLYSIZE_Msk     (1U << CRC_CR_POLYSIZE_Pos)
+#define CRC_CR_POLYSIZE_Msk     (0x3 << CRC_CR_POLYSIZE_Pos)
 #define CRC_CR_POLYS_32BIT      (0x0 << CRC_CR_POLYSIZE_Pos)
 #define CRC_CR_POLYS_16BIT      (0x1 << CRC_CR_POLYSIZE_Pos)
 #define CRC_CR_POLYS_8BIT       (0x2 << CRC_CR_POLYSIZE_Pos)
@@ -53,12 +54,14 @@ typedef enum {
 #define CRC_CR_REVIN_Msk        (0x3 << CRC_CR_REVIN_Pos)
 #define CRC_CR_REVIN_NONE       (0x0 << CRC_CR_REVIN_Pos)
 #define CRC_CR_REVIN_BYTE       (0x1 << CRC_CR_REVIN_Pos)
-#define CRC_CR_REVIN_LONG       (0x2 << CRC_CR_REVIN_Pos)
+#define CRC_CR_REVIN_HALFWORD   (0x2 << CRC_CR_REVIN_Pos)
 #define CRC_CR_REVIN_WORD       (0x3 << CRC_CR_REVIN_Pos)
 #define CRC_CR_REVOUT_Pos       7
 #define CRC_CR_REVOUT_Msk       (1U << CRC_CR_REVOUT_Pos)
 #define CRC_CR_REVOUT_NONE      (0U << CRC_CR_REVOUT_Pos)
 #define CRC_CR_REVOUT_INV       (1U << CRC_CR_REVOUT_Pos)
+
+void crc_enable(void);
 
 void crc_reset(void);
 
