@@ -81,3 +81,4 @@ Sorted from highest to lowest implementation priority.
 | **TSC** | ❌ Not started | Touch Sensing Controller. Needed: group/channel config, acquisition, threshold. |
 | **CEC** | ❌ Not started | HDMI-CEC controller. Needed: init, TX/RX, interrupt handling. |
 | **CRS** | ❌ Not started | Clock Recovery System — trims HSI48 using an external reference (SOF or GPIO). |
+| **IRTIM** | ❌ Not started | Infrared Timer interface — combines TIM16 and TIM17 to generate modulated IR signals. Needed: init, enable/disable, output routing via GPIO AF. |
